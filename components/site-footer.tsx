@@ -1,6 +1,6 @@
 export function SiteFooter() {
   return (
-    <footer className="border-t bg-gray-50">
+    <footer className="border-t bg-gray-50 p-[10%] md:p-[5%]">
       <div className="container py-8">
         <div className="grid grid-cols-1 gap-8 sm:grid-cols-2 md:grid-cols-4">
           <div>

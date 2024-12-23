@@ -1,29 +1,28 @@
-"use client"
+"use client";
 
-import { Heart } from 'lucide-react'
-import { Button } from "@/components/ui/button"
-import { useProduct } from "@/lib/hooks/use-product"
-import { useCart } from "@/lib/contexts/cart-context"
-import type { Product } from "@/types/domain/product"
+import { Heart } from "lucide-react";
+import { Button } from "@/components/ui/button";
+import { useProduct } from "@/lib/hooks/use-product";
+import { useCart } from "@/lib/contexts/cart-context";
+import type { Product } from "@/types/domain/product";
 
 interface ProductInfoProps {
-  product: Product
+  product: Product;
 }
 
 export function ProductInfo({ product }: ProductInfoProps) {
-  const { dispatch } = useCart()
+  const { dispatch } = useCart();
   const {
     selectedColor,
     selectedSize,
     quantity,
     setSelectedColor,
     setSelectedSize,
-    setQuantity,
     isValid,
-  } = useProduct(product)
+  } = useProduct(product);
 
   const addToCart = () => {
-    if (!isValid || !selectedColor || !selectedSize) return
+    if (!isValid || !selectedColor || !selectedSize) return;
 
     dispatch({
       type: "ADD_ITEM",
@@ -33,8 +32,8 @@ export function ProductInfo({ product }: ProductInfoProps) {
         color: selectedColor.id,
         size: selectedSize.name,
       },
-    })
-  }
+    });
+  };
 
   return (
     <div className="space-y-8">
@@ -49,15 +48,15 @@ export function ProductInfo({ product }: ProductInfoProps) {
       </div>
       <div className="space-y-4">
         <div>
-          <div className="mb-2 font-medium">
-            Өнгө ({product.colors.length})
-          </div>
+          <div className="mb-2 font-medium">Өнгө ({product.colors.length})</div>
           <div className="flex gap-2">
             {product.colors.map((color) => (
               <button
                 key={color.id}
                 className={`relative h-12 w-12 overflow-hidden rounded-full border ${
-                  selectedColor?.id === color.id ? "ring-2 ring-primary ring-offset-2" : ""
+                  selectedColor?.id === color.id
+                    ? "ring-2 ring-primary ring-offset-2"
+                    : ""
                 }`}
                 onClick={() => setSelectedColor(color)}
               >
@@ -78,7 +77,9 @@ export function ProductInfo({ product }: ProductInfoProps) {
               <button
                 key={size.id}
                 className={`rounded border px-3 py-1 ${
-                  selectedSize?.id === size.id ? "bg-primary text-primary-foreground" : "hover:bg-accent"
+                  selectedSize?.id === size.id
+                    ? "bg-primary text-primary-foreground"
+                    : "hover:bg-accent"
                 }`}
                 onClick={() => setSelectedSize(size)}
                 disabled={!size.inStock}
@@ -103,6 +104,5 @@ export function ProductInfo({ product }: ProductInfoProps) {
         </Button>
       </div>
     </div>
-  )
+  );
 }
-
