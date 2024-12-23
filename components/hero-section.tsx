@@ -16,9 +16,7 @@ export function HeroSection() {
             үзэмжтэй загварыг санал болгож байна
           </p>
           <div className="mt-4">
-            <Button className="bg-pink-600 hover:bg-pink-700">
-              Захиалах өдөр
-            </Button>
+            <Button>Захиалах өдөр</Button>
           </div>
         </div>
         <div className="md:w-1/2">

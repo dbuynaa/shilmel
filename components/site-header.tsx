@@ -1,8 +1,9 @@
-import { Heart, ShoppingCart, User } from "lucide-react";
+import { Heart, ShoppingCart } from "lucide-react";
 import Link from "next/link";
 import Image from "next/image";
 import { Button } from "@/components/ui/button";
 import { FilterDialog } from "./filter-dialog";
+import { LoginModal } from "./login-modal";
 
 export function SiteHeader() {
   return (
@@ -25,9 +26,7 @@ export function SiteHeader() {
           <Button variant="ghost" size="icon">
             <ShoppingCart className="h-14 w-14" />
           </Button>
-          <Button variant="ghost" size="icon">
-            <User className="h-14 w-14" />
-          </Button>
+          <LoginModal />
         </div>
       </div>
     </header>

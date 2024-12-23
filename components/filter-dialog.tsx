@@ -4,13 +4,16 @@ import { Menu, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import {
   Dialog,
+  DialogClose,
   DialogContent,
   DialogHeader,
+  DialogTitle,
   DialogTrigger,
 } from "@/components/ui/dialog";
 import { Input } from "@/components/ui/input";
 import { ScrollArea } from "@/components/ui/scroll-area";
 import { cn } from "@/lib/utils";
+import { VisuallyHidden } from "@radix-ui/react-visually-hidden";
 
 const categories = [
   { id: "work", name: "Ажлын хувцас" },
@@ -37,12 +40,17 @@ export function FilterDialog() {
         </Button>
       </DialogTrigger>
       <DialogContent className="max-w-4xl gap-0 p-0">
+        <VisuallyHidden asChild>
+          <DialogTitle />
+        </VisuallyHidden>
         <DialogHeader className="p-4">
           <div className="flex items-center gap-2">
-            <Button variant="ghost" size="icon" className="shrink-0">
-              <X className="h-4 w-4" />
-              <span className="sr-only">Close</span>
-            </Button>
+            <DialogClose asChild>
+              <Button className="shrink-0">
+                <X className="h-4 w-4" /> Арилгах
+                {/* <span className="sr-only">Арилгах</span> */}
+              </Button>
+            </DialogClose>
             <Input placeholder="Хайх" className="h-9" />
           </div>
         </DialogHeader>
